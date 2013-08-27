@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="@Url.Content("~/Scripts/jquery.webcam.js")"></script>
+<script>
+    $(function () {
+        $("#Kamera").webcam({
+            width: 320,
+            height: 240,
+            mode: "save",
+            swffile: "@Url.Content("~/Scripts/jscam.swf")",
+            onTick: function () { },
+            onSave: function () {
+            },
+            onCapture: function () {
+                webcam.save("@Url.Content("~/Home/FotoCek")/");
+            },
+            debug: function () { },
+            onLoad: function () { }
+        });        
+    });
+
+</script>
+
+<h2>Index</h2>
+<input type="button" value="Ateşle!" onclick="webcam.capture();" />
+<div id="Kamera"></div>
